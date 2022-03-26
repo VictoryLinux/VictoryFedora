@@ -1,5 +1,5 @@
 #!/bin/bash
-# Finish Setup my ArcoLinux
+# Finish Setup my inux
 
 #####################################################################
 #  ____    ____  __                                                 #
@@ -8,7 +8,7 @@
 #    \      /  |   ||  |_   |  |   |   |_|  ||  | |__| \   /        #
 #     \____/   |___||____|  |__|    \_____ / |__|       |_|         #
 #                                                                   #
-# Victory Linux ArchLinux Setup                                     #
+# Victory Linux Install script                               #
 # https://github.com/VictoryLinux                                   #
 #####################################################################
 
@@ -21,16 +21,13 @@ echo -e "    \      /  |   ||  |_   |  |   |   |_|  ||  | |__| \   /     "
 echo -e "     \____/   |___||____|  |__|    \_____ / |__|       |_|      "
 echo -e "                                                                "
 echo -e "----------------------------------------------------------------"
-echo -e "               █████╗ ██████╗  ██████╗██╗  ██╗                  "
-echo -e "              ██╔══██╗██╔══██╗██╔════╝██║  ██║                  "
-echo -e "              ███████║██████╔╝██║     ███████║                  "
-echo -e "              ██╔══██║██╔══██╗██║     ██╔══██║                  "
-echo -e "              ██║  ██║██║  ██║╚██████╗██║  ██║                  "
-echo -e "              ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝                  "
+echo -e "    ██████╗ ██████╗ ██████╗     █████╗   ██████╗  █████╗        "
+echo -e "    ███═══╝ ██════╝ ██    ██╗  ██    ██╗ ██   ██╗██╔══██╗       "
+echo -e "    █████╗  █████╗  ██     ██╗██      ██╗██████╔╝███████║       "
+echo -e "    ███══╝  ██═══╝  ██    ██╔╝ ██    ██╔╝██   ██║██║  ██║       "
+echo -e "    ███╗    ██████╗ ██████╔═╝   ██████╔╝ ██   ██║██║  ██║       "
+echo -e "    ╚══╝    ╚═════╝ ╚═════╝     ╚═════╝  ╚═╝  ╚═╝╚═╝  ╚═╝       "
 echo -e "----------------------------------------------------------------"
-echo -e "-Setting up $iso mirrors for faster downloads"
-echo -e "----------------------------------------------------------------"
-
 
 # Make sure each command executes properly
 check_exit_status() {
@@ -56,8 +53,11 @@ check_exit_status() {
 
 function greeting() {
 	clear
-
-	echo -e "----------------------------------------------------------------"
+	
+    echo "+-------------------------------------------------------------------------+"
+echo "|-------   Hello, $USER. Let's setup your Victory-Edition.  -------|"
+echo "+-------------------------------------------------------------------------+"
+echo -e "----------------------------------------------------------------"
 echo -e "  ____    ____  __                                              "
 echo -e "  \   \  /   / |__| ____ ________    ____    _______ ___  ___   "
 echo -e "   \   \/   /  ___ |   _|\__   __\ /   _  \ |  __   |\  \/  /   "
@@ -65,17 +65,27 @@ echo -e "    \      /  |   ||  |_   |  |   |   |_|  ||  | |__| \   /     "
 echo -e "     \____/   |___||____|  |__|    \_____ / |__|       |_|      "
 echo -e "                                                                "
 echo -e "----------------------------------------------------------------"
-echo -e "               █████╗ ██████╗  ██████╗██╗  ██╗                  "
-echo -e "              ██╔══██╗██╔══██╗██╔════╝██║  ██║                  "
-echo -e "              ███████║██████╔╝██║     ███████║                  "
-echo -e "              ██╔══██║██╔══██╗██║     ██╔══██║                  "
-echo -e "              ██║  ██║██║  ██║╚██████╗██║  ██║                  "
-echo -e "              ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝                  "
+echo -e "    ██████╗ ██████╗ ██████╗     █████╗   ██████╗  █████╗        "
+echo -e "    ███═══╝ ██════╝ ██    ██╗  ██    ██╗ ██   ██╗██╔══██╗       "
+echo -e "    █████╗  █████╗  ██     ██╗██      ██╗██████╔╝███████║       "
+echo -e "    ███══╝  ██═══╝  ██    ██╔╝ ██    ██╔╝██   ██║██║  ██║       "
+echo -e "    ███╗    ██████╗ ██████╔═╝   ██████╔╝ ██   ██║██║  ██║       "
+echo -e "    ╚══╝    ╚═════╝ ╚═════╝     ╚═════╝  ╚═╝  ╚═╝╚═╝  ╚═╝       "
 echo -e "----------------------------------------------------------------"
-echo -e "-Setting up $iso mirrors for faster downloads"
+echo -e " DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK. "
 echo -e "----------------------------------------------------------------"
 
-	echo
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "++++++++  Things you need to know before you start  ++++++++"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "++                                                        ++"
+echo "++ 1.) "This is NOT a silent install"                      ++"
+echo "++                                                        ++"
+echo "++ "you will be asked several questions as it progresses"  ++"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+	
+	
 #	sleep 5s
 	echo "ARE YOU READY TO START? [y,n]"
 	read input
@@ -90,7 +100,7 @@ echo -e "----------------------------------------------------------------"
 
 	   echo "You replied $input, you are ready to start"
 	   echo
-	   echo "Starting VictoryArch Post install script."
+	   echo "Starting VictoryFedora install script."
 	   echo
 	   sleep 3s
 
@@ -108,360 +118,266 @@ fi
 	check_exit_status
 }
 
-# searching for the fastest mirrors
-function mirror() {
+# Enable root user
+function root() {
 
-	echo "Updating your Mirrors."
-	sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist;
-	check_exit_status
-}
-
-# Installing any Arch Linux Updates
-function general_update() {
-
-	echo "Updating ArchLinux."
+	echo "############################"
+	echo "|    Enabling Root user.   |"
+	echo "############################"
 	echo
-	sleep 3s
-	sudo pacman -Syyu --noconfirm;
+	sleep 6s
+	sudo passwd root
+	echo
 	check_exit_status
 }
 
-# Debloat
+# Set the Hostname
+function hostname() {
+	
+	echo "############################"
+	echo "|     Set the Hostname.    |"
+	echo "############################"
+	echo
+	sleep 6s
+	sudo nano /etc/hostname;
+	echo
+	check_exit_status
+}
+
+# Adding RPM Fusion as a repository
+function thirdparty() {
+
+	echo "#########################################"
+	echo "|     Adding RPM Fusion and Flathub.    |"
+	echo "#########################################"
+	echo
+	sleep 6s
+	#sudo dnf install https://mirrors.rpmfusion.org/free/rpmfusion-free-release-$(rpm -E %.noarch.rpm https://mirrors.rpmfusion.org/nonfree/rpmfusion-nonfree-release-$(rpm -E %.noarch.rpm;
+	echo
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	echo
+	check_exit_status
+}
+
+# Updating 
+function update() {
+
+	echo "###########################"
+	echo "|     Updating     |"
+	echo "###########################"
+	echo
+	sleep 6s
+	echo	
+	sudo dnf update -y;
+	echo
+	check_exit_status
+}
+
+# Removing unwanted pre-installed packages
 function debloat() {
 
-	echo "Debloating."
+	echo "#############################"
+	echo "|     Debloating     |"
+	echo "#############################"
 	echo
-	sleep 3s
-    sudo pacman -Rdsu gnome-books gnome-clocks gnome-maps gnome-music gnome-weather gnome-boxes --noconfirm
-	check_exit_status
-}
-
-# cpu
-function cpu() {
-
-# determine processor type and install microcode
-proc_type=$(lscpu | awk '/Vendor ID:/ {print $3}')
-case "$proc_type" in
-	GenuineIntel)
-		print "Installing Intel microcode"
-		pacman -S --noconfirm intel-ucode
-		proc_ucode=intel-ucode.img
-		;;
-	AuthenticAMD)
-		print "Installing AMD microcode"
-		pacman -S --noconfirm amd-ucode
-		proc_ucode=amd-ucode.img
-		;;
-esac	
-	check_exit_status
-}
-
-# gpu
-function gpu() {
-
-	# Graphics Drivers find and install
-if lspci | grep -E "NVIDIA|GeForce"; then
-    pacman -S nvidia --noconfirm --needed
-	nvidia-xconfig
-elif lspci | grep -E "Radeon"; then
-    pacman -S xf86-video-amdgpu --noconfirm --needed
-elif lspci | grep -E "Integrated Graphics Controller"; then
-    pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils --needed --noconfirm
-fi
-
-echo -e "\nDone!\n"
-if [ $(whoami) = "root"  ];
-then
-    useradd -m -G wheel,libvirt -s /bin/bash $username 
-	passwd $username
-	cp -R /root/VictoryArch /home/$username/
-    chown -R $username: /home/$username/VictoryArch
-	read -p "Please name your machine:" nameofmachine
-	echo $nameofmachine > /etc/hostname
-else
-	echo "You are already a user proceed with aur installs"
-fi
-	check_exit_status
-}
-
-# Running Arch Linux Setup Scripts
-function packages() {
+	sleep 6s
+	sudo dnf -y remove gnome-clocks gnome-maps simple-scan gnome-weather gnome-boxes totem rhythmbox;
 	echo
-	#Add parallel downloading
-sed -i 's/^#Para/Para/' /etc/pacman.conf
+	check_exit_status
+}
 
-#Enable multilib
-sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-pacman -Sy --noconfirm
+# Installing Packages
+function install() {
 
-echo -e "\nInstalling Base System\n"
+	echo "###############################"
+	echo "|     Installing Packages.    |"
+	echo "###############################"
+	echo
+
+sleep 6s
 
 PKGS=(
-'mesa' # Essential Xorg First
-'xorg'
-'xorg-server'
-'xorg-apps'
-'xorg-drivers'
-'xorg-xkill'
-'xorg-xinit'
 'alacarte'
-'ark' # compression
 'autoconf' # build
 'automake' # build
-'base'
-'bash-completion'
-'bind'
-'binutils'
-'bison'
-'bluez'
-'bluez-libs'
-'bluez-utils'
-'btrfs-progs'
+'breeze-cursor-theme'
 'celluloid' # video players
-'cmatrix'
-'cronie'
-'cups'
-'dconf-editor'
-'dialog'
-'dosfstools'
-'dtc'
-'efibootmgr' # EFI boot
-'egl-wayland'
-'exfat-utils'
-'extra-cmake-modules'
+'dkms'
+'dnf-plugins-core'
 'filelight'
-'firefox'
-'flatpak'
 'flex'
-'fuse2'
 'fuse3'
-'fuseiso'
 'gamemode'
 'gcc'
 'gimp' # Photo editing
 'git'
-'gnome-tweaks'
+'gnome-tweak-tool'
 'gparted' # partition management
-'gptfdisk'
 'grub-customizer'
-'gst-libav'
-'gst-plugins-good'
-'gst-plugins-ugly'
-'gufw'
 'gwenview'
+'gydl'
+'gvfs-smb'
 'haveged'
 'htop'
-'iptables-nft'
-'jdk-openjdk' # Java 17
 'kcodecs'
+'kernel-devel'
 'kmail'
 'kmag'
 'layer-shell-qt'
-'libdvdcss'
-'libnewt'
-'libtool'
-'linux'
-'linux-firmware'
-'linux-headers'
 'lsof'
 'lzop'
 'm4'
 'make'
-'milou'
 'mtools'
-'nano'
+'nodejs'
+'npm'
 'ncdu'
 'neofetch'
 'networkmanager'
-'ntfs-3g'
-'ntp'
+'dconf-editor'
+'meson'
 'onboard'
-'openbsd-netcat'
+'openjdk' # Java 17
 'openssh'
-'os-prober'
 'p7zip'
-'pacman-contrib'
 'patch'
-'picom'
-'pipewire'
-#'pipewire-media-session'
 'pkgconf'
 'powerline-fonts'
-'print-manager'
-'python-notify2'
-'python-psutil'
-'python-pyqt5'
-'python-pip'
-'rsync'
-'samba'
-'smbclient'
-'smbnetfs'
-'gvfs-smb'
-'python-pysmbc'
-'remmina'
 'snapper'
+'stacer'
 'starship'
-'sudo'
 'swtpm'
 'terminator'
 'terminus-font'
-'thunar'
+'timeshift'
 'traceroute'
-'ufw'
 'unrar'
+'util-linux-user'
+'ufw'
 'unzip'
 'usbutils'
-'vino'
 'variety'
-'virtualbox'
-'virtualbox-host-modules-arch'
-'virtualbox-guest-utils'
-'vscodium-bin'
+'VirtualBox'
 'wireplumber'
-'wget'
-'which'
 'wine'
 'winetricks'
-'xdg-user-dirs'
 'youtube-dl'
-'zeroconf-ioslave'
-'zip'
+#
+'chrome-gnome-shell'
+'wine-dxvk'
+#'gnome-shell-extension-impatience-git'
+#'gnome-shell-extension-no-annoyance-git'
+'gnome-shell-extension-dash-to-dock'
+#'gnome-shell-extension-tiling-assistant'
+#'gnome-shell-extension-extensions'
+'gnome-shell-extension-caffeine'
+'gnome-shell-extension-pop-shell-git'
+'gnome-shell-extension-sound-output-device-chooser'
+#'gnome-shell-extension-vitals-git'
+#'gnome-shell-extension-gnome-ui-tune'
+
 )
 
 for PKG in "${PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    sudo pacman -S "$PKG" --noconfirm --needed
+    sudo dnf install "$PKG" -y
 done
+
+	sleep 3s
+	echo
+	systemctl restart vboxdrv
+	echo
+	sleep 3s
+	dnf module install nodejs:15
+	echo
+	#git clone https://github.com/pop-os/shell
+	#cd shell
+	#make local-install
+	#sleep 3s
+	#sudo dnf install cargo rust gtk3-devel
+	#git clone https://github.com/pop-os/shell-shortcuts
+	#cd shell-shortcuts
+	#make
+	#sudo make install
+	echo
+	sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+	echo
+	sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+	echo
+	sudo dnf install brave-browser -y
+	echo
+    sudo rpm --import https://packagecloud.io/shiftkey/desktop/gpgkey
+    echo
+    sudo sh -c 'echo -e "[shiftkey]\nname=GitHub Desktop\nbaseurl=https://packagecloud.io/shiftkey/desktop/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/shiftkey/desktop/gpgkey" > /etc/yum.repos.d/shiftkey-desktop.repo' 
+    echo
+    sudo dnf install github-desktop
+    echo
+    sudo dnf copr enable elxreno/multimc -y && sudo dnf install multimc -y
+    echo
+	sleep 3s
+
+	flatpak install flathub com.discordapp.Discord -y
+	flatpak install flathub org.onlyoffice.desktopeditors -y
+	flatpak install flathub com.simplenote.Simplenote -y
+	flatpak install flathub com.system76.Popsicle -y
+    flatpak install flathub com.vscodium.codium -y
+    flatpak install flathub com.mattjakeman.ExtensionManager -y
+    flatpak install flathub com.bitwarden.desktop -y
+    flatpak install flathub nl.hjdskes.gcolor3 -y
+    flatpak install flathub com.usebottles.bottles -y
+
+
+
+	echo
+	flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
+	flatpak install plex-media-player tv.plex.PlexMediaPlayer -y
+	echo
+    cd ~/
+	git clone https://github.com/ryanoasis/nerd-fonts
+	cd ~/nerd-fonts
+	./install.sh FiraCode
+	echo
+	check_exit_status
+}
+
+# Put the wallpaper
+function backgrounds() {
+
+	echo "#########################################"
+	echo "|     Setting up Favorite Wallpaper.    |"
+	echo "#########################################"
+	echo
+	sleep 6s
+	cd ~/
+    git clone https://gitlab.com/dwt1/wallpapers.git
 
 	check_exit_status
 }
 
-function aur() {
-#echo "CLONING: YAY"
-#cd ~
-#git clone "https://aur.archlinux.org/yay.git"
-#cd ${HOME}/yay
-#makepkg -si --noconfirm
-cd ~
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/powerlevel10k
-
-	PKGS=(
-'appimagelauncher'
-'chrome-gnome-shell'
-'awesome-terminal-fonts'
-'brave-bin' # Brave Browser
-'dxvk-bin' # DXVK DirectX to Vulcan
-#'flat-remix'
-#'flat-remix-gtk'
-'github-desktop-bin' # Github Desktop sync
-'gnome-shell-extension-blur-my-shell-git'
-'gnome-shell-extension-impatience-git'
-'gnome-shell-extension-no-annoyance-git'
-'gnome-shell-extension-dash-to-dock-git'
-'gnome-shell-extension-tiling-assistant'
-'gnome-shell-extension-extensions'
-'gnome-shell-extension-caffeine-git'
-'gnome-shell-extension-pop-shell-git'
-'gnome-shell-extension-sound-output-device-chooser'
-'gnome-shell-extension-vitals-git'
-'gnome-shell-extension-gnome-ui-tune'
-'inxi'
-'loginized'
-'multimc-bin'
-'nerd-fonts-fira-code'
-'pamac-all'
-'papirus-icon-theme'
-'popsicle-git'
-'polychromatic'
-'plymouth'
-'ocs-url' # install packages from websites
-'onlyoffice-bin'
-'openrgb'
-'openrazer-meta'
-'snap-pac'
-'stacer-bin'
-'timeshift'
-'timeshift-autosnap'
-'ttf-droid'
-'ttf-hack'
-'ttf-meslo' # Nerdfont package
-'ttf-roboto'
-'update-grub'
-'xcursor-breeze'
-'zoom' # video conferences
-)
-
-for PKG in "${PKGS[@]}"; do
-    yay -S --noconfirm $PKG
-done
-
-    check_exit_status
-}
-
-# Install Flatpaks
-function flatpaks() {
-    sudo flatpak install flathub com.simplenote.Simplenote -y
-    sudo flatpak install flathub com.vscodium.codium -y
-    sudo flatpak install flathub com.mattjakeman.ExtensionManager -y
-    sudo flatpak install flathub com.discordapp.Discord -y
-    sudo flatpak install flathub com.bitwarden.desktop -y
-    sudo flatpak install flathub nl.hjdskes.gcolor3 -y
-    sudo flatpak install flathub com.usebottles.bottles -y
-
-    check_exit_status
-}
-
-#WALLPAPER
-function wallpaper() {
-cd ~/
-git clone https://gitlab.com/dwt1/wallpapers.git
-
-check_exit_status
-}
-
-#GRUB
-function grub() {
-cd $HOME/VictoryArch/grub/
-sudo ./install.sh
-
-check_exit_status
-}
-
-#CONFIGS
+#
 function configs() {
-export PATH=$PATH:~/.local/bin
-cp -r $HOME/VictoryArch/configs/* $HOME/.config/
-echo
-sudo mv -f $HOME/VictoryArch/configs/pacman.conf /etc/
-echo
-mv $HOME/.config/bashrc $HOME/.config/.bashrc
-mv $HOME/.config/.bashrc $HOME
-echo
-mv $HOME/.config/face $HOME/.config/.face
-mv $HOME/.config/.face $HOME
-
-#mv $HOME/.config/smb.conf $HOME /etc/samba/
-
-check_exit_status
+	
+	echo "##################################"
+	echo "|     Setting Format changes.    |"
+	echo "##################################"
+	echo
+	sleep 6s
+    echo
+    export PATH=$PATH:~/.local/bin
+    cp -r $HOME/VictoryFedora/configs/* $HOME/.config/
+    echo
+    sudo mv -f $HOME/VictoryFedora/configs/pacman.conf /etc/
+    echo
+    mv $HOME/.config/bashrc $HOME/.config/.bashrc
+    mv $HOME/.config/.bashrc $HOME
+    echo
+    mv $HOME/.config/face $HOME/.config/.face
+    mv $HOME/.config/.face $HOME
+    
 }
 
-function plymouth() {
-PLYMOUTH_THEMES_DIR="$HOME/VictoryArch/configs/usr/share/plymouth/themes"
-PLYMOUTH_THEME="arch-glow" # can grab from config later if we allow selection
-mkdir -p /usr/share/plymouth/themes
-echo 'Installing Plymouth theme...'
-cp -rf ${PLYMOUTH_THEMES_DIR}/${PLYMOUTH_THEME} /usr/share/plymouth/themes
-  sed -i 's/HOOKS=(base udev*/& plymouth/' /etc/mkinitcpio.conf # add plymouth after base udev
-
-plymouth-set-default-theme -R arch-glow # sets the theme and runs mkinitcpio
-echo 'Plymouth theme installed'
-
-check_exit_status
-}
-
-#APPEARANCE
 function appearance() {
-cd $HOME/VictoryArch/
+cd $HOME/VictoryFedora/
 git clone https://github.com/daniruiz/flat-remix
 git clone https://github.com/daniruiz/flat-remix-gtk
 #mkdir -p ~/.icons && mkdir -p ~/.themes
@@ -484,51 +400,73 @@ check_exit_status
 function extensions() {
 gnome-extensions enable caffeine@patapon.info
 gnome-extensions enable dash-to-dock@micxgx.gmail.com
-gnome-extensions enable impatience@gfxmonk.net
-gnome-extensions enable noannoyance@daase.net
+#gnome-extensions enable impatience@gfxmonk.net
+#gnome-extensions enable noannoyance@daase.net
 gnome-extensions enable pop-shell@system76.com
-gnome-extensions enable tiling-assistant@leleat-on-github
-gnome-extensions enable Vitals@CoreCoding.com
+#gnome-extensions enable tiling-assistant@leleat-on-github
+#gnome-extensions enable Vitals@CoreCoding.com
 gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
 gnome-extensions enable sound-output-device-chooser@kgshank.net
-gnome-extensions enable gnome-ui-tune@itstime.tech
-gnome-extensions enable pamac-updates@manjaro.org
-gnome-extensions enable taskicons@rliang.github.com
+#gnome-extensions enable gnome-ui-tune@itstime.tech
+#gnome-extensions enable pamac-updates@manjaro.org
+#gnome-extensions enable taskicons@rliang.github.com
 
 check_exit_status
 }
 
-function leave() {
-
+#
+function clean-up() {
+	
+	echo "##################################"
+	echo "|     Cleaning up Left Overs.    |"
+	echo "##################################"
 	echo
-	echo "---------------------------------------"
-	echo "---- VictoryLinux has been installed! ----"
-	echo "---------------------------------------"
+	sleep 6s
+	sudo rm -rf /usr/share/backgrounds/gnome
 	echo
-	echo "This PC may need to be restarted"
+	sudo rm -rf /usr/share/backgrounds/workstation
 	echo
-	echo
-	echo
-	echo "Restarting in 15 Seconds"
-	sleep 15s
-	reboot
+	sudo rm -rf ~/nerd-fonts
+    echo
+	check_exit_status
 }
 
-# Place a # in front of any part of this script yould like to skip:
+# finish
+function finish() {
+	read -p "Are You ready to restart now? (y/n) " answer 
+
+            if [ "$answer" == "y" ]
+            then
+            	cecho
+		echo "----------------------------------------------------"
+		echo "---- VictoryFedora has been installed! ----"
+		echo "----------------------------------------------------"
+		echo
+		check_exit_status
+		echo
+		echo "Restarting in 15s"
+		sleep 15s
+                shutdown -r now
+
+            if [ "$answer" == "n" ]
+            then
+		exit 1
+
+            fi
+        fi
+
+}
 
 greeting
-#mirror
-general_update
+root
+hostname
+thirdparty
+update
 debloat
-#cpu
-gpu
-packages
-aur
-flatpaks
-wallpaper
-grub
-plymouth
+install
+backgrounds
 configs
 appearance
 extensions
-leave
+clean-up
+finish
