@@ -296,11 +296,11 @@ done
 	echo
 	sudo dnf install brave-browser -y
 	echo
-	sudo rpm --import https://packagecloud.io/shiftkey/desktop/gpgkey
+	sudo rpm --import https://packagecloud.io/shiftkey/desktop/gpgkey -y
   	echo
-   	sudo sh -c 'echo -e "[shiftkey]\nname=GitHub Desktop\nbaseurl=https://packagecloud.io/shiftkey/desktop/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/shiftkey/desktop/gpgkey" > /etc/yum.repos.d/shiftkey-desktop.repo' 
+   	sudo sh -c 'echo -e "[shiftkey]\nname=GitHub Desktop\nbaseurl=https://packagecloud.io/shiftkey/desktop/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/shiftkey/desktop/gpgkey" > /etc/yum.repos.d/shiftkey-desktop.repo' -y 
   	echo
-  	sudo dnf install github-desktop
+  	sudo dnf install github-desktop -y
   	echo
    	sudo dnf copr enable elxreno/multimc -y && sudo dnf install multimc -y
    	echo
