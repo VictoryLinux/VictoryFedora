@@ -1,5 +1,5 @@
 #!/bin/bash
-# Finish Setup my FedoraLinux
+# Finish Setup my inux
 
 #####################################################################
 #  ____    ____  __                                                 #
@@ -412,6 +412,39 @@ gnome-extensions enable sound-output-device-chooser@kgshank.net
 check_exit_status
 }
 
+#GPU
+function gpu() {
+echo "Nvidia GPU? [y,n]"
+	read input
+
+	# did we get an input value?
+	if [ "$input" == "" ]; then
+
+	   echo "Nothing was entered by the user"
+
+	# was it a y or a yes?
+	elif [[ "$input" == "y" ]] || [[ "$input" == "yes" ]]; then
+
+	   echo "You replied $input, installing Nvidia Graphics Driver"
+	   echo
+	   sudo dnf update -y # and reboot if you are not on the latest kernel
+	   sudo dnf install akmod-nvidia
+	   sleep 3s
+
+	# treat anything else as a negative response
+	else
+
+	   echo "You replied $input, you are not ready"
+	   echo
+	   exit 
+
+fi
+
+	echo
+	
+	check_exit_status
+}
+
 #GRUB
 function grub() {
 cd $HOME/VictoryFedora/grub/
@@ -466,6 +499,7 @@ function finish() {
 
 greeting
 root
+gpu
 hostname
 thirdparty
 update
