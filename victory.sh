@@ -290,41 +290,31 @@ done
 	sleep 3s
 	dnf module install nodejs:15
 	echo
-	#git clone https://github.com/pop-os/shell
-	#cd shell
-	#make local-install
-	#sleep 3s
-	#sudo dnf install cargo rust gtk3-devel
-	#git clone https://github.com/pop-os/shell-shortcuts
-	#cd shell-shortcuts
-	#make
-	#sudo make install
-	echo
 	sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 	echo
 	sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 	echo
 	sudo dnf install brave-browser -y
 	echo
-    sudo rpm --import https://packagecloud.io/shiftkey/desktop/gpgkey
-    echo
-    sudo sh -c 'echo -e "[shiftkey]\nname=GitHub Desktop\nbaseurl=https://packagecloud.io/shiftkey/desktop/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/shiftkey/desktop/gpgkey" > /etc/yum.repos.d/shiftkey-desktop.repo' 
-    echo
-    sudo dnf install github-desktop
-    echo
-    sudo dnf copr enable elxreno/multimc -y && sudo dnf install multimc -y
-    echo
+	sudo rpm --import https://packagecloud.io/shiftkey/desktop/gpgkey
+  	echo
+   	sudo sh -c 'echo -e "[shiftkey]\nname=GitHub Desktop\nbaseurl=https://packagecloud.io/shiftkey/desktop/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/shiftkey/desktop/gpgkey" > /etc/yum.repos.d/shiftkey-desktop.repo' 
+  	echo
+  	sudo dnf install github-desktop
+  	echo
+   	sudo dnf copr enable elxreno/multimc -y && sudo dnf install multimc -y
+   	echo
 	sleep 3s
 
 	flatpak install flathub com.discordapp.Discord -y
 	flatpak install flathub org.onlyoffice.desktopeditors -y
 	flatpak install flathub com.simplenote.Simplenote -y
 	flatpak install flathub com.system76.Popsicle -y
-    flatpak install flathub com.vscodium.codium -y
-    flatpak install flathub com.mattjakeman.ExtensionManager -y
-    flatpak install flathub com.bitwarden.desktop -y
-    flatpak install flathub nl.hjdskes.gcolor3 -y
-    flatpak install flathub com.usebottles.bottles -y
+    	flatpak install flathub com.vscodium.codium -y
+    	flatpak install flathub com.mattjakeman.ExtensionManager -y
+    	flatpak install flathub com.bitwarden.desktop -y
+    	flatpak install flathub nl.hjdskes.gcolor3 -y
+    	flatpak install flathub com.usebottles.bottles -y
 
 
 
@@ -332,7 +322,7 @@ done
 	flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
 	flatpak install plex-media-player tv.plex.PlexMediaPlayer -y
 	echo
-    cd ~/
+    	cd ~/
 	git clone https://github.com/ryanoasis/nerd-fonts
 	cd ~/nerd-fonts
 	./install.sh FiraCode
@@ -349,7 +339,7 @@ function backgrounds() {
 	echo
 	sleep 6s
 	cd ~/
-    git clone https://gitlab.com/dwt1/wallpapers.git
+    	git clone https://gitlab.com/dwt1/wallpapers.git
 
 	check_exit_status
 }
@@ -362,56 +352,55 @@ function configs() {
 	echo "##################################"
 	echo
 	sleep 6s
-    echo
-    export PATH=$PATH:~/.local/bin
-    cp -r $HOME/VictoryFedora/configs/* $HOME/.config/
-    echo
-    sudo mv -f $HOME/VictoryFedora/configs/pacman.conf /etc/
-    echo
-    mv $HOME/.config/bashrc $HOME/.config/.bashrc
-    mv $HOME/.config/.bashrc $HOME
-    echo
-    mv $HOME/.config/face $HOME/.config/.face
-    mv $HOME/.config/.face $HOME
+   	echo
+   	export PATH=$PATH:~/.local/bin
+    	cp -r $HOME/VictoryFedora/configs/* $HOME/.config/
+    	echo
+    
+    	mv $HOME/.config/bashrc $HOME/.config/.bashrc
+    	mv $HOME/.config/.bashrc $HOME
+    	echo
+   	mv $HOME/.config/face $HOME/.config/.face
+    	mv $HOME/.config/.face $HOME
     
 }
 
 function appearance() {
-cd $HOME/VictoryFedora/
-git clone https://github.com/daniruiz/flat-remix
-git clone https://github.com/daniruiz/flat-remix-gtk
-#mkdir -p ~/.icons && mkdir -p ~/.themes
-#cp -r flat-remix/Flat-Remix* ~/.icons/ && cp -r flat-remix-gtk/themes/Flat-Remix* ~/.themes/
-sudo mv flat-remix/Flat-Remix* /usr/share/icons/ 
-sudo mv flat-remix-gtk/themes/Flat-Remix* /usr/share/themes/
-rm -rf ~/flat-remix flat-remix-gtk
-gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Blue-Dark"
-gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
-echo
-gsettings set org.gnome.shell favorite-apps "['brave-browser.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop', 'com.simplenote.Simplenote.desktop', 'virtualbox.desktop', 'com.vscodium.codium.desktop', 'onboard.desktop']"
-gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
-gsettings set org.gnome.desktop.interface clock-format '12h'   
-gsettings set org.gnome.desktop.interface cursor-theme 'Breeze'
+	cd $HOME/VictoryFedora/
+	git clone https://github.com/daniruiz/flat-remix
+	git clone https://github.com/daniruiz/flat-remix-gtk
+	#mkdir -p ~/.icons && mkdir -p ~/.themes
+	#cp -r flat-remix/Flat-Remix* ~/.icons/ && cp -r flat-remix-gtk/themes/Flat-Remix* ~/.themes/
+	sudo mv flat-remix/Flat-Remix* /usr/share/icons/ 
+	sudo mv flat-remix-gtk/themes/Flat-Remix* /usr/share/themes/
+	rm -rf ~/flat-remix flat-remix-gtk
+	gsettings set org.gnome.desktop.interface gtk-theme "Flat-Remix-GTK-Blue-Dark"
+	gsettings set org.gnome.desktop.interface icon-theme "Flat-Remix-Blue-Dark"
+	echo
+	gsettings set org.gnome.shell favorite-apps "['brave-browser.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'terminator.desktop', 'com.simplenote.Simplenote.desktop', 'virtualbox.desktop', 'com.vscodium.codium.desktop', 'onboard.desktop']"
+	gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+	gsettings set org.gnome.desktop.interface clock-format '12h'   
+	gsettings set org.gnome.desktop.interface cursor-theme 'Breeze'
 
-check_exit_status
+	check_exit_status
 }
 
 #EXTENSIONS
 function extensions() {
-gnome-extensions enable caffeine@patapon.info
-gnome-extensions enable dash-to-dock@micxgx.gmail.com
-#gnome-extensions enable impatience@gfxmonk.net
-#gnome-extensions enable noannoyance@daase.net
-gnome-extensions enable pop-shell@system76.com
-#gnome-extensions enable tiling-assistant@leleat-on-github
-#gnome-extensions enable Vitals@CoreCoding.com
-gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
-gnome-extensions enable sound-output-device-chooser@kgshank.net
-#gnome-extensions enable gnome-ui-tune@itstime.tech
-#gnome-extensions enable pamac-updates@manjaro.org
-#gnome-extensions enable taskicons@rliang.github.com
+	gnome-extensions enable caffeine@patapon.info
+	gnome-extensions enable dash-to-dock@micxgx.gmail.com
+	#gnome-extensions enable impatience@gfxmonk.net
+	#gnome-extensions enable noannoyance@daase.net
+	gnome-extensions enable pop-shell@system76.com
+	#gnome-extensions enable tiling-assistant@leleat-on-github
+	#gnome-extensions enable Vitals@CoreCoding.com
+	gnome-extensions enable window-list@gnome-shell-extensions.gcampax.github.com
+	gnome-extensions enable sound-output-device-chooser@kgshank.net
+	#gnome-extensions enable gnome-ui-tune@itstime.tech
+	#gnome-extensions enable pamac-updates@manjaro.org
+	#gnome-extensions enable taskicons@rliang.github.com
 
-check_exit_status
+	check_exit_status
 }
 
 #
@@ -427,7 +416,7 @@ function clean-up() {
 	sudo rm -rf /usr/share/backgrounds/workstation
 	echo
 	sudo rm -rf ~/nerd-fonts
-    echo
+   	echo
 	check_exit_status
 }
 
