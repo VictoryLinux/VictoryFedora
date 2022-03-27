@@ -1,5 +1,5 @@
 #!/bin/bash
-# Finish Setup my inux
+# Finish Setup my FedoraLinux
 
 #####################################################################
 #  ____    ____  __                                                 #
