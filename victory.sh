@@ -425,7 +425,7 @@ echo "Nvidia GPU? [y,n]"
 	# was it a y or a yes?
 	elif [[ "$input" == "y" ]] || [[ "$input" == "yes" ]]; then
 
-	   echo "You replied $input, installing Nvidia Graphics Driver"
+	   echo "You replied $input, Installing Nvidia Graphics Driver"
 	   echo
 	   sudo dnf update -y # and reboot if you are not on the latest kernel
 	   sudo dnf install akmod-nvidia
@@ -436,7 +436,8 @@ echo "Nvidia GPU? [y,n]"
 
 	   echo "You replied $input, you are not ready"
 	   echo
-	   exit 
+	   echo "NOT installing Nvidia Graphics Driver, moving on."
+	   sleep 6s
 
 fi
 
