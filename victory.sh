@@ -231,7 +231,7 @@ PKGS=(
 'dconf-editor'
 'meson'
 'onboard'
-'openjdk' # Java 17
+'java-latest-openjdk.x86_64' # Java 17
 'openssh'
 'p7zip'
 'patch'
