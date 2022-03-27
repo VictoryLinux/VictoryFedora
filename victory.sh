@@ -500,12 +500,12 @@ function finish() {
 
 greeting
 root
-gpu
 hostname
 thirdparty
 update
 debloat
 install
+gpu
 backgrounds
 configs
 appearance
