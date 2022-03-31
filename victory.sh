@@ -213,6 +213,7 @@ PKGS=(
 'gvfs-smb'
 'haveged'
 'htop'
+'inxi'
 'kcodecs'
 'kernel-devel'
 'kmail'
