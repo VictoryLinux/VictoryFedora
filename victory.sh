@@ -129,7 +129,7 @@ function root() {
 function hostname() {
 	
 	echo "############################"
-	echo "|     Set the Hostname.    |"
+	echo "|     Set the PC Name.     |"
 	echo "############################"
 	echo
 	sleep 6s
@@ -137,6 +137,33 @@ function hostname() {
 	echo
 	check_exit_status
 }
+
+# GPU 2
+function gpu2() {
+	# Graphics Drivers find and install
+if lspci | grep -E "NVIDIA|GeForce"; then
+    sudo dnf install akmod-nvidia
+elif lspci | grep -E "Radeon"; then
+    echo 'AMD Detected, moving on'
+elif lspci | grep -E "Integrated Graphics Controller"; then
+    echo 'Intel UHD Detected, moving on'
+fi
+
+echo -e "\nDone!\n"
+if [ $(whoami) = "root"  ];
+then
+    useradd -m -G wheel,libvirt -s /bin/bash $username 
+	passwd $username
+	cp -R /root/VictoryFedora /home/$username/
+    chown -R $username: /home/$username/VictoryFedora
+	read -p "Please name your machine:" nameofmachine
+	echo $nameofmachine > /etc/hostname
+else
+	echo "You are already a user proceed"
+fi
+	check_exit_status
+}
+
 
 # Adding RPM Fusion as a repository
 function thirdparty() {
@@ -146,18 +173,37 @@ function thirdparty() {
 	echo "#########################################"
 	echo
 	sleep 6s
-	#sudo dnf install https://mirrors.rpmfusion.org/free/rpmfusion-free-release-$(rpm -E %.noarch.rpm https://mirrors.rpmfusion.org/nonfree/rpmfusion-nonfree-release-$(rpm -E %.noarch.rpm;
+	sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm;
 	echo
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	echo
 	check_exit_status
 }
 
+# Add to DNF config
+function mirror() {
+
+	echo "###########################"
+	echo "|         Mirrors         |"
+	echo "###########################"
+	echo
+	sleep 6s
+	# Set to Fastest Mirror
+	sed -i -e 'fastestmirror=True' /etc/dnf/dnf.conf 
+	# Add parallel downloading
+	sed -i -e 'max_parallel_downloads=10' /etc/dnf/dnf.conf
+	# Add Y as default
+	sed -i -e '$adefaultyes=True' /etc/dnf/dnf.conf
+	echo
+	check_exit_status
+	
+}
+
 # Updating 
 function update() {
 
 	echo "###########################"
-	echo "|     Updating     |"
+	echo "|        Updating         |"
 	echo "###########################"
 	echo
 	sleep 6s
@@ -171,7 +217,7 @@ function update() {
 function debloat() {
 
 	echo "#############################"
-	echo "|     Debloating     |"
+	echo "|        Debloating         |"
 	echo "#############################"
 	echo
 	sleep 6s
@@ -224,6 +270,7 @@ PKGS=(
 'm4'
 'make'
 'mtools'
+'mono-complete'
 'nodejs'
 'npm'
 'ncdu'
@@ -280,37 +327,43 @@ done
 
 	sleep 3s
 	echo
+	# AppimageLauncher
+	cd Downloads
+	wget https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+	echo
+	sudo rpm -i appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm
+	echo
+	cd ~/
+	echo
+	# VirtualBox
 	systemctl restart vboxdrv
 	echo
 	sleep 3s
 	dnf module install nodejs:15
 	echo
-	#git clone https://github.com/pop-os/shell
-	#cd shell
-	#make local-install
-	#sleep 3s
-	#sudo dnf install cargo rust gtk3-devel
-	#git clone https://github.com/pop-os/shell-shortcuts
-	#cd shell-shortcuts
-	#make
-	#sudo make install
-	echo
+	# Brave Browser
 	sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 	echo
 	sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 	echo
 	sudo dnf install brave-browser -y
 	echo
-    	sudo rpm --import https://packagecloud.io/shiftkey/desktop/gpgkey
+	# Github Desktop
+	cd Downloads
+	echo
+    	wget https://github.com/shiftkey/desktop/releases/download/release-2.9.9-linux2/GitHubDesktop-linux-2.9.9-linux2.rpm
+	echo
+	sudo rpm -i GitHubDesktop-linux-2.9.9-linux2.rpm
     	echo
-    	sudo sh -c 'echo -e "[shiftkey]\nname=GitHub Desktop\nbaseurl=https://packagecloud.io/shiftkey/desktop/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/shiftkey/desktop/gpgkey" > /etc/yum.repos.d/shiftkey-desktop.repo' 
-    	echo
-    	sudo dnf install github-desktop
-    	echo
-    	sudo dnf copr enable elxreno/multimc -y && sudo dnf install multimc -y
-    	echo
+	# Sound Codecs
+	sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+	echo
+	sudo dnf install lame\* --exclude=lame-devel
+	echo
+	sudo dnf group upgrade --with-optional Multimedia
 	sleep 3s
-
+	
+	# Flatpaks
 	flatpak install flathub com.discordapp.Discord -y
 	flatpak install flathub org.onlyoffice.desktopeditors -y
 	flatpak install flathub com.simplenote.Simplenote -y
@@ -320,9 +373,7 @@ done
     	flatpak install flathub com.bitwarden.desktop -y
     	flatpak install flathub nl.hjdskes.gcolor3 -y
     	flatpak install flathub com.usebottles.bottles -y
-
-
-
+	
 	echo
 	flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
 	flatpak install plex-media-player tv.plex.PlexMediaPlayer -y
@@ -450,6 +501,30 @@ function grub() {
 	check_exit_status
 }
 
+# Games
+function gmaes() {
+	mkdir Games
+	echo 
+	cd Games
+	echo
+	# MultiMC
+	wget https://files.multimc.org/downloads/mmc-stable-lin64.tar.gz
+	echo
+	tar -xvzf mmc-stable-lin64.tar.gz
+	echo
+	rm mmc-stable-lin64.tar.gz
+	echo
+	# Ascension Wow
+	export WINEPREFIX="/home/${USER}/.config/projectascension/WoW"
+	echo
+	export WINEARCH=win32
+	echo
+	wget https://download.ascension-patch.gg/update/ascension-launcher-77.AppImage
+	echo
+	cd ~/
+	check_exit_status
+}
+
 #
 function clean-up() {
 	
@@ -495,12 +570,14 @@ function finish() {
 
 greeting
 root
-hostname
+#hostname
+gpu2
 thirdparty
 update
 debloat
 install
-gpu
+games
+#gpu
 backgrounds
 configs
 appearance
