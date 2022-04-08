@@ -133,24 +133,7 @@ function hostname() {
 	echo "############################"
 	echo
 	sleep 6s
-	sudo nano /etc/hostname;
-	echo
-	check_exit_status
-}
-
-# GPU 2
-function gpu2() {
-	# Graphics Drivers find and install
-if lspci | grep -E "NVIDIA|GeForce"; then
-    sudo dnf install akmod-nvidia
-elif lspci | grep -E "Radeon"; then
-    echo 'AMD Detected, moving on'
-elif lspci | grep -E "Integrated Graphics Controller"; then
-    echo 'Intel UHD Detected, moving on'
-fi
-
-echo -e "\nDone!\n"
-if [ $(whoami) = "root"  ];
+	if [ $(whoami) = "root"  ];
 then
     useradd -m -G wheel,libvirt -s /bin/bash $username 
 	passwd $username
@@ -159,11 +142,11 @@ then
 	read -p "Please name your machine:" nameofmachine
 	echo $nameofmachine > /etc/hostname
 else
-	echo "You are already a user proceed"
+	sudo nano /etc/hostname
 fi
+	echo
 	check_exit_status
 }
-
 
 # Adding RPM Fusion as a repository
 function thirdparty() {
@@ -223,6 +206,21 @@ function debloat() {
 	sleep 6s
 	sudo dnf -y remove gnome-clocks gnome-maps simple-scan gnome-weather gnome-boxes totem rhythmbox;
 	echo
+	check_exit_status
+}
+
+# GPU 2
+function gpu2() {
+	# Graphics Drivers find and install
+if lspci | grep -E "NVIDIA|GeForce"; then
+    sudo dnf install akmod-nvidia
+elif lspci | grep -E "Radeon"; then
+    echo 'AMD Detected, moving on'
+elif lspci | grep -E "Integrated Graphics Controller"; then
+    echo 'Intel UHD Detected, moving on'
+fi
+
+echo -e "\nDone!\n"
 	check_exit_status
 }
 
@@ -570,12 +568,12 @@ function finish() {
 
 greeting
 root
-#hostname
-gpu2
+hostname
 thirdparty
 mirror
 update
 debloat
+gpu2
 install
 games
 #gpu
