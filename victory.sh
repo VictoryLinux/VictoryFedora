@@ -172,11 +172,11 @@ function mirror() {
 	echo
 	sleep 6s
 	# Set to Fastest Mirror
-	sed -i -e 'fastestmirror=True' /etc/dnf/dnf.conf 
+	sudo sed -i -e 'fastestmirror=True' /etc/dnf/dnf.conf 
 	# Add parallel downloading
-	sed -i -e 'max_parallel_downloads=10' /etc/dnf/dnf.conf
+	sudo sed -i -e 'max_parallel_downloads=10' /etc/dnf/dnf.conf
 	# Add Y as default
-	sed -i -e '$adefaultyes=True' /etc/dnf/dnf.conf
+	sudo sed -i -e '$adefaultyes=True' /etc/dnf/dnf.conf
 	echo
 	check_exit_status
 	
