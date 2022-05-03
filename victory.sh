@@ -575,7 +575,7 @@ update
 debloat
 gpu2
 install
-games
+#games
 #gpu
 backgrounds
 configs
