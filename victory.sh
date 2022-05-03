@@ -354,11 +354,11 @@ done
 	sudo rpm -i GitHubDesktop-linux-2.9.9-linux2.rpm
     	echo
 	# Sound Codecs
-	sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+	sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
 	echo
-	sudo dnf install lame\* --exclude=lame-devel
+	sudo dnf install lame\* --exclude=lame-devel -y
 	echo
-	sudo dnf group upgrade --with-optional Multimedia
+	sudo dnf group upgrade --with-optional Multimedia -y
 	sleep 3s
 	
 	# Flatpaks
@@ -371,6 +371,7 @@ done
     	flatpak install flathub com.bitwarden.desktop -y
     	flatpak install flathub nl.hjdskes.gcolor3 -y
     	flatpak install flathub com.usebottles.bottles -y
+	flatpak install flathub org.polymc.PolyMC -y
 	
 	echo
 	flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
