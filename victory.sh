@@ -340,19 +340,19 @@ done
 	dnf module install nodejs:15
 	echo
 	# Brave Browser
-	sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-	echo
-	sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-	echo
-	sudo dnf install brave-browser -y
-	echo
+	#sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+	#echo
+	#sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+	#echo
+	#sudo dnf install brave-browser -y
+	#echo
 	# Github Desktop
-	cd Downloads
-	echo
-    	wget https://github.com/shiftkey/desktop/releases/download/release-2.9.9-linux2/GitHubDesktop-linux-2.9.9-linux2.rpm
-	echo
-	sudo rpm -i GitHubDesktop-linux-2.9.9-linux2.rpm
-    	echo
+	#cd Downloads
+	#echo
+    	#wget https://github.com/shiftkey/desktop/releases/download/release-2.9.9-linux2/GitHubDesktop-linux-2.9.9-linux2.rpm
+	#echo
+	#sudo rpm -i GitHubDesktop-linux-2.9.9-linux2.rpm
+    	#echo
 	# Sound Codecs
 	sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
 	echo
@@ -372,6 +372,8 @@ done
     	flatpak install flathub nl.hjdskes.gcolor3 -y
     	flatpak install flathub com.usebottles.bottles -y
 	flatpak install flathub org.polymc.PolyMC -y
+	flatpak install flathub io.github.shiftey.Desktop -y
+	flatpak install flathub com.brave.Browser -y
 	
 	echo
 	flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
@@ -582,6 +584,6 @@ backgrounds
 configs
 appearance
 extensions
-grub
+#grub
 clean-up
 finish
