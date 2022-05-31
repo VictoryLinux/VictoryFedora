@@ -572,7 +572,7 @@ function finish() {
 greeting
 root
 hostname
-thirdparty
+#thirdparty
 mirror
 update
 debloat
