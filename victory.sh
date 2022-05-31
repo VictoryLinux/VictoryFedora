@@ -576,7 +576,7 @@ thirdparty
 mirror
 update
 debloat
-gpu2
+#gpu2
 install
 #games
 #gpu
