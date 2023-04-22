@@ -245,6 +245,7 @@ PKGS=(
 'filelight'
 'flex'
 'fuse3'
+'fira-code-fonts'
 'gamemode'
 'gcc'
 'gimp' # Photo editing
@@ -365,7 +366,7 @@ done
 	flatpak install flathub com.discordapp.Discord -y
 	flatpak install flathub org.onlyoffice.desktopeditors -y
 	flatpak install flathub com.simplenote.Simplenote -y
-	flatpak install flathub com.system76.Popsicle -y
+#	flatpak install flathub com.system76.Popsicle -y
     	flatpak install flathub com.vscodium.codium -y
     	flatpak install flathub com.mattjakeman.ExtensionManager -y
     	flatpak install flathub com.bitwarden.desktop -y
@@ -379,11 +380,11 @@ done
 	flatpak remote-add --if-not-exists plex-media-player https://flatpak.knapsu.eu/plex-media-player.flatpakrepo
 	flatpak install plex-media-player tv.plex.PlexMediaPlayer -y
 	echo
-    	cd ~/
-	git clone https://github.com/ryanoasis/nerd-fonts
-	cd ~/nerd-fonts
-	./install.sh FiraCode
-	echo
+#    	cd ~/
+#	git clone https://github.com/ryanoasis/nerd-fonts
+#	cd ~/nerd-fonts
+#	./install.sh FiraCode
+#	echo
 	check_exit_status
 }
 
